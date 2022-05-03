@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p /github/workspace/etc/supervisor.d/
+mkdir -p $GITHUB_WORKSPACE/etc/supervisor.d/
 
-envsubst /data/task-definition.json.tpl > /github/workspace/task-definition.json
-envsubst /data/supervisord/service.ini > /github/workspace/etc/supervisor.d/$SERVICE.ini
+envsubst /data/task-definition.json.tpl > $GITHUB_WORKSPACE/task-definition.json
+envsubst /data/supervisord/service.ini > $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
