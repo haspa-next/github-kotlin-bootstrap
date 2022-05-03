@@ -1,10 +1,9 @@
 FROM alpine:latest
 
 RUN apk -v --update add bash python3 py3-pip gettext
+RUN mkdir /data
 
-WORKDIR /data
+COPY entrypoint.sh /entrypoint.sh
+COPY supervisord /data/supervisord
 
-COPY entrypoint.sh entrypoint.sh
-COPY supervisord supervisord
-
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

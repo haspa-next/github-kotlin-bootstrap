@@ -1,4 +1,6 @@
 #!/bin/bash
 
-envsubst task-definition.tpl > task-definition.json
-envsubst supervisord/service.ini > /etc/supervisor.d/$SERVICE.ini
+mkdir -p /github/workspace/etc/supervisor.d/
+
+envsubst /data/task-definition.json.tpl > /github/workspace/task-definition.json
+envsubst /data/supervisord/service.ini > /github/workspace/etc/supervisor.d/$SERVICE.ini
