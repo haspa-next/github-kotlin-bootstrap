@@ -2,14 +2,18 @@
 name: 'Bootstrap Kotlin service'
 description: 'Creates task definition and service startup configuration files'
 inputs:
-    run-cmd:
+    run_cmd:
         description: 'Command used to start the service application'
         required: false
-        default: "java -Xmx${memory}m -jar ${service}-service.jar"
-    memory:
+        default: "java -Xmx${application_memory}m -jar ${service}-service.jar"
+    application_memory:
         description: 'Amount of memory (in MB) the JVM will allocate for the application' 
         required: false
         default: 256
+    task_memory: 
+        description: 'Amount of memory (in MB) ECS will allocate to the service task'
+        required: false
+        default: 320
     service_name:
         description: "Name of the service"
         required: true
@@ -17,8 +21,9 @@ runs:
     using: 'docker'
     image: 'Dockerfile'
     env:
-        RUN_CMD: ${{ inputs.run-cmd }}
-        MEMORY: ${{ inputs.memory }}
+        RUN_CMD: ${{ inputs.run_cmd }}
+        APPLICATION_MEMORY: ${{ inputs.application_memory }}
+        TASK_MEMORY: ${{ inputs.task_memory }}
         SERVICE: ${{ inputs.service_name }}
     args:
         - ${{ inputs.service_name }}

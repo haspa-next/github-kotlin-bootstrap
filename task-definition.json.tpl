@@ -3,9 +3,9 @@
   "containerDefinitions": [
     {
       "image": "255382753382.dkr.ecr.eu-central-1.amazonaws.com/$SERVICE-service:%IMAGE_VERSION%",
-      "name": "$SERVICEC-%ENVIRONMENT%",
+      "name": "$SERVICE-%ENVIRONMENT%",
       "cpu": 100,
-      "memory": 320,
+      "memory": $TASK_MEMORY,
       "essential": true,
       "portMappings": [
         {
