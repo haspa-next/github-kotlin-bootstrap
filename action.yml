@@ -22,6 +22,7 @@ runs:
     env:
         RUN_CMD: ${{ inputs.run-cmd }}
         MEMORY: ${{ inputs.memory }}
+        SERVICE: ${{ inputs.service }}
     args:
         - ${{ inputs.service }}
         - ${{ inputs.environment }}
