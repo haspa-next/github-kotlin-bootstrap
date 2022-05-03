@@ -10,11 +10,8 @@ inputs:
         description: 'Amount of memory (in MB) the JVM will allocate for the application' 
         required: false
         default: 256
-    service:
+    service_name:
         description: "Name of the service"
-        required: true
-    environment:
-        description: "Name of the environment"
         required: true
 runs:
     using: 'docker'
@@ -22,7 +19,6 @@ runs:
     env:
         RUN_CMD: ${{ inputs.run-cmd }}
         MEMORY: ${{ inputs.memory }}
-        SERVICE: ${{ inputs.service }}
+        SERVICE: ${{ inputs.service_name }}
     args:
-        - ${{ inputs.service }}
-        - ${{ inputs.environment }}
+        - ${{ inputs.service_name }}
