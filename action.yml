@@ -1,0 +1,27 @@
+# action.yml
+name: 'Bootstrap Kotlin service'
+description: 'Creates task definition and service startup configuration files'
+inputs:
+    run-cmd:
+        description: 'Command used to start the service application'
+        required: false
+        default: "java -Xmx${memory}m -jar ${service}-service.jar"
+    memory:
+        description: 'Amount of memory (in MB) the JVM will allocate for the application' 
+        required: false
+        default: 256
+    service:
+        description: "Name of the service"
+        required: true
+    environment:
+        description: "Name of the environment"
+        required: true
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    env:
+        RUN_CMD: ${{ inputs.run-cmd }}
+        MEMORY: ${{ inputs.memory }}
+    args:
+        - ${{ inputs.service }}
+        - ${{ inputs.environment }}
