@@ -1,8 +1,10 @@
-FROM vault:0.10.3
+FROM alpine:latest
 
-RUN apk -v --update add bash curl gettext jq python3 py3-pip && python3 -m pip install awscli --upgrade 
+RUN apk -v --update add bash python3 py3-pip gettext
 
-COPY scripts /scripts
-COPY entrypoint.sh /entrypoint.sh
+WORKDIR /data
 
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh entrypoint.sh
+COPY supervisord supervisord
+
+ENTRYPOINT ["./entrypoint.sh"]
