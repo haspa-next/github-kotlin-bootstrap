@@ -10,5 +10,7 @@ cat /data/supervisord/service.ini
 envsubst < /data/task-definition.json.tpl > $GITHUB_WORKSPACE/task-definition.json
 envsubst < /data/supervisord/service.ini > $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
 
+echo "Dies ist ein Test" > $GITHUB_WORKSPACE/test
+
 cat $GITHUB_WORKSPACE/task-definition.json
 cat $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
