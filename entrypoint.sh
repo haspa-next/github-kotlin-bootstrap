@@ -1,14 +1,17 @@
 #!/bin/bash
 
-mkdir -p $GITHUB_WORKSPACE/etc/supervisor.d/
-
 echo Setting up kotlin bootstrap
 
 cat /data/task-definition.json.tpl
 cat /data/supervisord/service.ini
 
-envsubst < /data/task-definition.json.tpl > $GITHUB_WORKSPACE/task-definition.json
-envsubst < /data/supervisord/service.ini > $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
+#mkdir -p $GITHUB_WORKSPACE/etc/supervisor.d/
+#envsubst < /data/task-definition.json.tpl > $GITHUB_WORKSPACE/task-definition.json
+#envsubst < /data/supervisord/service.ini > $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
+
+mkdir -p /data/etc/supervisor.d/
+envsubst < /data/task-definition.json.tpl > /data/task-definition.json
+envsubst < /data/supervisord/service.ini > /data/etc/supervisor.d/$SERVICE.ini
 
 echo "Dies ist ein Test" > $GITHUB_WORKSPACE/test
 
