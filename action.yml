@@ -16,7 +16,6 @@ runs:
     image: 'Dockerfile'
     env:
         RUN_CMD: ${{ inputs.run_cmd }}
-        APPLICATION_MEMORY: ${{ inputs.application_memory }}
         TASK_MEMORY: ${{ inputs.task_memory }}
         SERVICE: ${{ inputs.service_name }}
     args:
