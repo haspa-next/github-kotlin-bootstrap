@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM docker:20.10.14-alpine3.15
 
 RUN apk -v --update add bash python3 py3-pip gettext
 RUN mkdir /data
