@@ -17,4 +17,4 @@ cat $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
 
 cd /data
 echo Image name: $IMAGE_NAME
-docker build -e IMAGE_NAME -t $IMAGE_NAME-bootstrapped .
+docker build --build-arg IMAGE_NAME -t $IMAGE_NAME-bootstrapped .
