@@ -4,16 +4,10 @@ description: 'Creates task definition and service startup configuration files'
 inputs:
     run_cmd:
         description: 'Command used to start the service application'
-        required: false
-        default: "java -Xmx${application_memory}m -jar ${service}-service.jar"
-    application_memory:
-        description: 'Amount of memory (in MB) the JVM will allocate for the application' 
-        required: false
-        default: 256
+        required: true
     task_memory: 
         description: 'Amount of memory (in MB) ECS will allocate to the service task'
-        required: false
-        default: 320
+        required: true
     service_name:
         description: "Name of the service"
         required: true
