@@ -1,0 +1,3 @@
+FROM $IMAGE_NAME
+
+COPY task-definition.json lol.json

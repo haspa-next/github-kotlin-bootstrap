@@ -14,3 +14,6 @@ echo "Dies ist ein Test" > $GITHUB_WORKSPACE/test
 
 cat $GITHUB_WORKSPACE/task-definition.json
 cat $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
+
+cd /data
+docker build -t $IMAGE_NAME-bootstrapped .
