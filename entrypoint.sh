@@ -16,4 +16,5 @@ cat $GITHUB_WORKSPACE/task-definition.json
 cat $GITHUB_WORKSPACE/etc/supervisor.d/$SERVICE.ini
 
 cd /data
-docker build -t $IMAGE_NAME-bootstrapped .
+echo Image name: $IMAGE_NAME
+docker build -e IMAGE_NAME -t $IMAGE_NAME-bootstrapped .
